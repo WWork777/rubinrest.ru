@@ -339,13 +339,7 @@ export default function Meropriyatiya() {
         <div className={styles.quiestion__rigth}>
           <div className={styles.quiestion__rigth_left}>
             <div className={styles.manager}>
-              <Image
-                src={"/meropriyatiya/manager.svg"}
-                alt="manager"
-                width={80}
-                height={80}
-              />
-              <span>Менеджер Ольга ответит на ваши вопросы</span>
+              <span>Менеджер ответит на ваши вопросы</span>
             </div>
             <div>
               <button className={styles.button} onClick={handleOpenModal}>

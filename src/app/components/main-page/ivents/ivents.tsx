@@ -326,32 +326,32 @@ export default function Events() {
       <div className={styles.grid}>
         <Card
           title="СВАДЬБА"
-          image="/ivents/ivent1.jpg"
+          image="/ivents/ivent1.webp"
           onCardClick={() => handleCardClick("СВАДЬБА")}
         />
         <Card
           title="ВЫПУСКНОЙ"
-          image="/ivents/ivent2.jpg"
+          image="/ivents/ivent2.webp"
           onCardClick={() => handleCardClick("ВЫПУСКНОЙ")}
         />
         <Card
           title="ФУРШЕТ"
-          image="/ivents/ivent3.jpg"
+          image="/ivents/ivent3.webp"
           onCardClick={() => handleCardClick("ФУРШЕТ")}
         />
         <Card
           title="ЮБИЛЕЙ"
-          image="/ivents/ivent4.jpg"
+          image="/ivents/ivent4.webp"
           onCardClick={() => handleCardClick("ЮБИЛЕЙ")}
         />
         <Card
           title="БАНКЕТ"
-          image="/ivents/ivent5.jpg"
+          image="/ivents/ivent5.webp"
           onCardClick={() => handleCardClick("БАНКЕТ")}
         />
         <Card
           title="ВЫЕЗДНАЯ РЕГИСТРАЦИЯ"
-          image="/ivents/ivent6.jpg"
+          image="/ivents/ivent6.webp"
           onCardClick={() => handleCardClick("ВЫЕЗДНАЯ РЕГИСТРАЦИЯ")}
         />
       </div>
