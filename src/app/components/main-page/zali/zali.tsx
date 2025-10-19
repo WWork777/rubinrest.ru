@@ -1,7 +1,16 @@
 "use client";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Thumbs } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import styles from "./styles.module.scss";
 import Image from "next/image";
+
+// Импорт стилей Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
 
 interface CardProps {
   title: string;
@@ -97,32 +106,15 @@ interface ModalProps {
 }
 
 function Modal({ isOpen, onClose, hall }: ModalProps) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null
   );
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   if (!isOpen || !hall) return null;
-
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => (prev + 1) % hall.images.length);
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentSlide(
-      (prev) => (prev - 1 + hall.images.length) % hall.images.length
-    );
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
 
   const validatePhone = (phone: string) => {
     if (!phone.trim()) return "Телефон обязателен для заполнения";
@@ -131,13 +123,6 @@ function Modal({ isOpen, onClose, hall }: ModalProps) {
     if (!phoneRegex.test(phone.replace(/\s/g, "")))
       return "Введите корректный номер телефона";
     return "";
-  };
-
-  const goToSlide = (index: number) => {
-    if (isTransitioning || index === currentSlide) return;
-    setIsTransitioning(true);
-    setCurrentSlide(index);
-    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   const formatPhone = (value: string) => {
@@ -185,7 +170,6 @@ function Modal({ isOpen, onClose, hall }: ModalProps) {
     setSubmitStatus(null);
 
     try {
-      // Отправляем данные через наш API route
       const response = await fetch("/api/telegram", {
         method: "POST",
         headers: {
@@ -206,7 +190,6 @@ function Modal({ isOpen, onClose, hall }: ModalProps) {
       setSubmitStatus("success");
       console.log("Заявка успешно отправлена:", data);
 
-      // Закрываем модальное окно через 2 секунды после успешной отправки
       setTimeout(() => {
         onClose();
         setPhone("");
@@ -235,68 +218,55 @@ function Modal({ isOpen, onClose, hall }: ModalProps) {
             <p className={styles.hallDescription}>{hall.desc}</p>
           </div>
 
-          {/* Слайдер */}
+          {/* Swiper слайдер */}
           <div className={styles.slider}>
-            <div className={styles.sliderContainer}>
-              <div
-                className={styles.slidesWrapper}
-                style={{
-                  transform: `translateX(-${currentSlide * 100}%)`,
-                  transition: isTransitioning
-                    ? "transform 0.5s ease-in-out"
-                    : "none",
-                }}
-              >
-                {hall.images.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.slide} ${
-                      index === currentSlide ? styles.active : ""
-                    }`}
-                  >
-                    <div className={styles.sliderImage}>
-                      <Image
-                        src={image}
-                        alt={`${hall.title} - фото ${index + 1}`}
-                        fill
-                        style={{ objectFit: "cover" }}
-                        priority={index === 0}
-                      />
-                    </div>
+            <Swiper
+              modules={[Navigation, Pagination, Thumbs]}
+              navigation={{
+                nextEl: `.${styles.swiperButtonNext}`,
+                prevEl: `.${styles.swiperButtonPrev}`,
+              }}
+              pagination={{
+                el: `.${styles.swiperPagination}`,
+                clickable: true,
+                renderBullet: function (index, className) {
+                  return `<span class="${className} ${styles.swiperPaginationBullet}"></span>`;
+                },
+              }}
+              thumbs={{ swiper: thumbsSwiper }}
+              spaceBetween={0}
+              slidesPerView={1}
+              className={styles.mainSwiper}
+            >
+              {hall.images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className={styles.slideImage}>
+                    <Image
+                      src={image}
+                      alt={`${hall.title} - фото ${index + 1}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      priority={index === 0}
+                    />
                   </div>
-                ))}
-              </div>
-            </div>
-
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {/* Навигационные кнопки */}
             {hall.images.length > 1 && (
               <>
-                <button
-                  className={styles.sliderButton}
-                  onClick={prevSlide}
-                  disabled={isTransitioning}
+                <div
+                  className={`${styles.swiperButton} ${styles.swiperButtonPrev}`}
                 >
                   ‹
-                </button>
-                <button
-                  className={styles.sliderButton}
-                  onClick={nextSlide}
-                  disabled={isTransitioning}
+                </div>
+                <div
+                  className={`${styles.swiperButton} ${styles.swiperButtonNext}`}
                 >
                   ›
-                </button>
-
-                <div className={styles.sliderDots}>
-                  {hall.images.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`${styles.dot} ${
-                        index === currentSlide ? styles.active : ""
-                      }`}
-                      onClick={() => goToSlide(index)}
-                      disabled={isTransitioning}
-                    />
-                  ))}
                 </div>
+
+                {/* Пагинация */}
               </>
             )}
           </div>
