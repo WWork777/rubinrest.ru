@@ -1,0 +1,225 @@
+.footer {
+  margin-top: -4px;
+  width: 100%;
+  min-height: 400px; // Увеличил высоту
+  background: url("/footer/footer-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #f7ce54, transparent);
+  }
+}
+
+.footer__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 20px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 30px;
+    padding: 60px 20px 30px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 50px 20px 30px;
+    text-align: center;
+  }
+}
+
+.footer_item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+  }
+
+  // Первый блок с логотипом
+  &:first-child {
+    gap: 25px;
+
+    span {
+      font-size: 1.1rem;
+      color: #ffffff !important;
+      font-weight: 500;
+      line-height: 1.5;
+      max-width: 250px;
+
+      @media (max-width: 768px) {
+        max-width: 300px;
+        font-size: 1rem;
+      }
+    }
+
+    img {
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  p {
+    color: #f7f7f7;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  span {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  // Блок событий
+  &:nth-child(2) {
+    span {
+      max-width: 200px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+
+      @media (max-width: 768px) {
+        max-width: 300px;
+      }
+    }
+  }
+
+  // Блок контактов
+  &:nth-child(3) {
+    gap: 15px;
+
+    div {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateX(5px);
+      }
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      img {
+        filter: brightness(0) invert(1);
+        opacity: 0.9;
+        margin-top: 2px;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      span {
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Блок соцсетей
+  &:last-child {
+    gap: 20px;
+
+    div {
+      display: flex;
+      gap: 15px;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      img {
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        padding: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+
+        &:hover {
+          transform: scale(1.1);
+          background: rgba(247, 206, 84, 0.2);
+          box-shadow: 0 0 20px rgba(247, 206, 84, 0.3);
+        }
+      }
+    }
+  }
+}
+
+// Дополнительный блок для копирайта
+.footer__bottom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+
+  span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Анимации
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer_item {
+  animation: fadeInUp 0.6s ease forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+}

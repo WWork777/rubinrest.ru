@@ -1,0 +1,156 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/hero/hero.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1rem, 5vw, 3rem);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 1000px;
+  color: #fff;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  max-width: 700px;
+  line-height: 1.5;
+  color: #f2f2f2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.benefits li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  gap: 0.6rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 500;
+  transition: transform 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    color: #efce36;
+  }
+
+  img {
+    width: clamp(40px, 6vw, 55px);
+    height: auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.2rem;
+  background: #efce36;
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.5s forwards;
+
+  &:hover {
+    background: #e7c21c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 768px) {
+  .hero {
+    text-align: left;
+    align-items: flex-start;
+    padding-top: 6rem;
+  }
+
+  .heroContent {
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .benefits {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .benefits li {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* 🌀 Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

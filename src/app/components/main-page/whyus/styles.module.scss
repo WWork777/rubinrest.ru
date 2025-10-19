@@ -1,0 +1,252 @@
+.container {
+  width: 100%;
+  height: 600px;
+  background-image: url("/whyus/choose-img.png");
+  background-size: cover;
+  background-position: center;
+  margin-top: 120px;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  @media (max-width: 1024px) {
+    height: 500px;
+    margin-top: 80px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 400px;
+    margin-top: 60px;
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+    padding: 1.5rem 1rem;
+  }
+
+  h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 3rem;
+
+    @media (max-width: 1200px) {
+      font-size: 42px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 36px;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 28px;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 24px;
+    }
+  }
+}
+
+.gtid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 1200px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 1024px) {
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 2rem;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  @media (max-width: 360px) {
+    gap: 1rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 200px;
+
+  @media (max-width: 1024px) {
+    max-width: 180px;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 160px;
+    gap: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 140px;
+    width: 100%;
+    // Оставляем column для мобильных
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 360px) {
+    max-width: 120px;
+    gap: 0.4rem;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+
+    @media (max-width: 1024px) {
+      width: 45px;
+      height: 45px;
+    }
+
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (max-width: 360px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+
+    @media (max-width: 1200px) {
+      font-size: 1.6rem;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  span {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+
+    @media (max-width: 1024px) {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Для пятой карточки на мобильных - занимает всю ширину
+@media (max-width: 480px) {
+  .gtid {
+    // Первые 4 карточки по 2 в строке, 5-я на всю ширину
+    grid-template-areas:
+      "card1 card2"
+      "card3 card4"
+      "card5 card5";
+  }
+
+  // Можно добавить классы для каждой карточки или использовать :nth-child
+  .card:nth-child(5) {
+    grid-column: 1 / -1; // Занимает все колонки
+    max-width: 200px; // Можно увеличить максимальную ширину для одной карточки
+    justify-self: center;
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    span {
+      font-size: 0.85rem;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+// Для очень маленьких экранов
+@media (max-width: 360px) {
+  .card:nth-child(5) {
+    max-width: 180px;
+
+    p {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.8rem;
+    }
+  }
+}

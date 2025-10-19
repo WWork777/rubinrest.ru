@@ -1,0 +1,211 @@
+// styles.module.scss
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
+}
+
+.subTitle {
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto 0;
+  color: #666666;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0 15px;
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+}
+
+.grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+
+    &::before {
+      left: 100%;
+    }
+
+    .card__image {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 25px 15px;
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 15px;
+    gap: 12px;
+  }
+}
+
+.card__image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.card__title {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 700;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin: 10px 0;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    background: linear-gradient(30deg, transparent, black, transparent);
+    width: 30px; // Фиксированная ширина
+    flex: none;
+  }
+
+  &::before {
+    background: linear-gradient(30deg, transparent, black);
+  }
+
+  &::after {
+    background: linear-gradient(30deg, black, transparent);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+}
+
+.card__text {
+  color: #5d6d7e;
+  max-width: 280px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    max-width: 220px;
+  }
+}
+
+// Анимация появления карточек
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  &:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+}
+
+// Дополнительный контейнер для общего фона
+.container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 80px 20px;
+
+  @media (max-width: 768px) {
+    padding: 60px 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 10px;
+  }
+}

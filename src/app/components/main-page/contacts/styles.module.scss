@@ -1,0 +1,164 @@
+.contacts__container {
+  position: relative;
+  width: 100%;
+  @media (max-width: 1300px) {
+    height: 600px;
+  }
+
+  @media (max-width: 1024px) {
+    height: 550px;
+  }
+
+  @media (max-width: 768px) {
+    height: 700px;
+  }
+
+  @media (max-width: 480px) {
+    height: 750px;
+    margin: 40px 0;
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  font-size: 40px;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+}
+
+.contacts {
+  position: absolute;
+  top: 55%;
+  left: 15%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 25px 20px; // Еще уменьшил padding
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 280px; // Еще уменьшил ширину
+  width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0.95;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  // УБРАЛ overflow: hidden отсюда
+
+  @media (max-width: 1024px) {
+    left: 30px;
+    min-width: 260px;
+    padding: 20px 15px;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0 auto 30px;
+    max-width: 400px;
+    min-width: auto;
+    width: 90%;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  @media (max-width: 480px) {
+    padding: 18px 12px;
+    margin-bottom: 20px;
+  }
+}
+
+.contacts__item {
+  margin-bottom: 30px; // Еще уменьшил отступы
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 0.9rem; // Еще уменьшил шрифт
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px; // Еще уменьшил отступ
+
+    @media (max-width: 480px) {
+      font-size: 0.7rem;
+    }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 6px; // Еще уменьшил gap
+    padding: 6px 0; // Еще уменьшил padding
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    span {
+      font-size: 0.85rem; // Еще уменьшил шрифт
+      color: #2c3e50;
+      font-weight: 500;
+      line-height: 1.2; // Еще уменьшил межстрочный интервал
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// Анимации
+.contacts {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-30px);
+  }
+  to {
+    opacity: 0.95;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+// Для мобильной версии
+@media (max-width: 768px) {
+  .contacts {
+    animation: slideInUp 0.6s ease forwards;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.contacts:hover {
+  opacity: 0.98;
+  transition: opacity 0.3s ease;
+}

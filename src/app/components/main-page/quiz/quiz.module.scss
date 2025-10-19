@@ -1,0 +1,697 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 500px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    padding: 10px;
+    min-height: 400px;
+  }
+}
+
+.welcomeScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  height: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f7ce54 0%, #f4b400 100%);
+  color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(247, 206, 84, 0.3);
+
+  @media (max-width: 768px) {
+    padding: 30px 15px;
+    gap: 15px;
+  }
+
+  &.fadeOut {
+    animation: fadeOut 0.3s forwards;
+  }
+
+  &.fadeIn {
+    animation: fadeIn 0.3s forwards;
+  }
+}
+
+.welcomeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  filter: brightness(0) saturate(100%);
+  margin-bottom: 10px;
+}
+
+.welcomeTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000000;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+}
+
+.welcomeText {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color: #000000;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+}
+
+.startButton {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+
+  @media (max-width: 768px) {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.question,
+.contactForm {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+
+  @media (max-width: 768px) {
+    padding: 20px 15px;
+  }
+
+  &.fadeOut {
+    animation: fadeOut 0.3s forwards;
+  }
+
+  &.fadeIn {
+    animation: fadeIn 0.3s forwards;
+  }
+}
+
+.questionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+}
+
+.progress {
+  margin-bottom: 25px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
+.progressText {
+  position: absolute;
+  right: 0;
+  top: -5px;
+  font-size: 0.9rem;
+  color: #5d6d7e;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+}
+
+.progressBar {
+  height: 6px;
+  background: linear-gradient(to right, #f7ce54, #f4b400);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+}
+
+.option {
+  padding: 18px 20px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #2c3e50;
+
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    border-color: #f7ce54;
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    border-color: #f7ce54;
+    background-color: rgba(247, 206, 84, 0.1);
+  }
+
+  input {
+    margin-right: 12px;
+    accent-color: #f7ce54;
+  }
+}
+
+.textInput {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #f7ce54;
+    box-shadow: 0 0 0 3px rgba(247, 206, 84, 0.2);
+  }
+}
+
+.rangeContainer {
+  margin: 30px 0;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin: 20px 0;
+  }
+}
+
+.guestsValue {
+  margin-bottom: 20px;
+
+  .selectedValue {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f7ce54;
+    display: block;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  span:last-child {
+    color: #5d6d7e;
+    font-size: 1.1rem;
+  }
+}
+
+.rangeInput {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e9ecef;
+  border-radius: 4px;
+  outline: none;
+  margin: 20px 0;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f7ce54;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.rangeValues {
+  display: flex;
+  justify-content: space-between;
+  color: #5d6d7e;
+  font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    gap: 10px;
+  }
+}
+
+.backButton,
+.nextButton,
+.submitButton {
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+.backButton {
+  background: white;
+  color: #000000;
+  border: 2px solid #e9ecef;
+
+  &:hover {
+    background: #f8f9fa;
+    border-color: #f7ce54;
+  }
+}
+
+.nextButton,
+.submitButton {
+  background: linear-gradient(to right, #f7ce54, #f4b400);
+  color: #000000;
+  border: none;
+  box-shadow: 0 4px 15px rgba(247, 206, 84, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(247, 206, 84, 0.4);
+  }
+
+  &:disabled {
+    background: #e9ecef;
+    color: #adb5bd;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Стили для экрана с ценой
+.priceScreen {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
+
+  &.fadeOut {
+    animation: fadeOut 0.3s forwards;
+  }
+
+  &.fadeIn {
+    animation: fadeIn 0.3s forwards;
+  }
+}
+
+.priceIcon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.priceTitle {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.priceAmount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f7ce54;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.priceDescription {
+  color: #5d6d7e;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.giftButton {
+  background-color: #e7c21c;
+  color: black;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+}
+
+// Стили для формы контактов
+.contactForm {
+  .formTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .formDescription {
+    color: #5d6d7e;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+.contactType {
+  margin-bottom: 25px;
+
+  label {
+    display: block;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+}
+
+.contactOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactOption {
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-size: 0.9rem;
+
+  &.active {
+    border-color: #f7ce54;
+    background-color: rgba(247, 206, 84, 0.1);
+  }
+
+  input {
+    margin-right: 8px;
+    accent-color: #f7ce54;
+  }
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #f7ce54;
+      box-shadow: 0 0 0 3px rgba(247, 206, 84, 0.2);
+    }
+  }
+}
+
+.inputError {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+// В существующих стилях inputGroup добавьте:
+.inputGroup {
+  margin-bottom: 20px;
+  position: relative;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #f7ce54;
+      box-shadow: 0 0 0 3px rgba(247, 206, 84, 0.2);
+    }
+  }
+}
+
+.privacyPolicy {
+  margin: 25px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #5d6d7e;
+
+  &:hover .checkboxCustom {
+    border-color: #f7ce54;
+  }
+}
+
+.checkboxInput {
+  display: none;
+
+  &:checked + .checkboxCustom {
+    background: #f7ce54;
+    border-color: #f7ce54;
+
+    &::after {
+      content: "✓";
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.checkboxCustom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e9ecef;
+  border-radius: 4px;
+  background: white;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  margin-top: 2px;
+}
+
+.checkboxText {
+  flex: 1;
+}
+
+.privacyLink {
+  color: #f7ce54;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #f4b400;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacyPolicy {
+    margin: 20px 0;
+    padding: 15px;
+  }
+
+  .checkboxLabel {
+    font-size: 0.85rem;
+  }
+
+  .checkboxCustom {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// Стили для успешного экрана
+.successScreen {
+  text-align: center;
+  padding: 40px 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
+
+  .checkmark {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .successTitle {
+    color: #000000;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .successText {
+    color: #5d6d7e;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+
+  .successDetails {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    p {
+      margin: 8px 0;
+      color: #2c3e50;
+    }
+
+    .discount {
+      color: #efce36;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
