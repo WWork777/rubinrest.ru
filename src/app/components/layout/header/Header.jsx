@@ -59,6 +59,7 @@ export default function Header() {
 
           {/* Навигация desktop */}
           <nav className={styles.nav}>
+            <a href="#keytering">Кейтеринг</a>
             <a href="#reviews">Отзывы</a>
             <a href="#ivents">События</a>
             <a href="#banquet">Залы</a>
@@ -124,7 +125,10 @@ export default function Header() {
           >
             <img src="/logo/logo.svg" alt="" className={styles.mobile_logo} />
           </Link>
-          <nav>
+          <nav className={styles.nav_mobile}>
+            <a href="#keytering" onClick={() => setMenuOpen(false)}>
+              Кейтеринг
+            </a>
             <a href="#reviews" onClick={() => setMenuOpen(false)}>
               Отзывы
             </a>
