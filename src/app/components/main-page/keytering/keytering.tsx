@@ -18,22 +18,25 @@ function Card({
   people,
   price,
   onCardClick,
-  showMore,
-}: CardProps) {
+}: // showMore,
+CardProps) {
   return (
     <div className={styles.card}>
       <div className={styles.card_content} onClick={onCardClick}>
         <h3>{title}</h3>
         <span>
-          {people} человек | {price} руб.
+          {people} руб. | {price}
         </span>
       </div>
       <div
         className={styles.card_image}
         style={{ backgroundImage: `url(${image})` }}
-        onClick={onCardClick}
-      ></div>
-      {showMore && <span className={styles.card_more}>Подробнее</span>}
+      >
+        <button className={styles.orderButton} onClick={onCardClick}>
+          <span>Заказать</span>
+        </button>
+      </div>
+      {/* {showMore && <span className={styles.card_more}>Подробнее</span>} */}
     </div>
   );
 }
@@ -318,21 +321,21 @@ export default function Keytering() {
   const cateringOptions = [
     {
       image: "/keytering/1.webp",
-      title: "Банкет на юбилей",
-      people: "70",
-      price: "120 000",
+      title: "Фуршет",
+      people: "1800",
+      price: "Персона",
     },
     {
       image: "/keytering/2.webp",
-      title: "Фуршет на день рождения",
-      people: "35",
-      price: "50 000",
+      title: "Банкет",
+      people: "2900",
+      price: "Персона",
     },
     {
       image: "/keytering/3.webp",
-      title: "Банкет на свадьбу",
-      people: "70",
-      price: "120 000",
+      title: "Кофе-брейк",
+      people: "900",
+      price: "Персона",
     },
   ];
 
@@ -348,7 +351,7 @@ export default function Keytering() {
 
   return (
     <section className="container" id="keytering">
-      <h2 className={styles.title}>Кейтеринг</h2>
+      <h2 className={styles.title}>Выездной кейтеринг</h2>
       <p className={styles.subTitle}>
         Превратим любое пространство в изысканный ресторан с нашей атмосферой,
         кухней и сервисом
@@ -362,7 +365,7 @@ export default function Keytering() {
             people={option.people}
             price={option.price}
             onCardClick={() => handleCardClick(option.title)}
-            showMore={index === 2} // Показываем "подробнее" только для третьей карточки
+            // showMore={index === 2} // Показываем "подробнее" только для третьей карточки
           />
         ))}
       </div>
