@@ -14,14 +14,14 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Keytering />
-      <Rewievs />
-      <Quiz />
       <Ivents />
       <Zali />
-      <Whyus />
-      <Meropriyatiya />
+      <Quiz />
       <Stoimost />
+      <Meropriyatiya />
+      <Whyus />
+      <Rewievs />
+      <Keytering />
       <Form />
       <Contacts />
     </>
