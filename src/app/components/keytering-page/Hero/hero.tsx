@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import styles from "./hero.module.scss";
 import Image from "next/image";
 
 export default function HeroKeytering() {
