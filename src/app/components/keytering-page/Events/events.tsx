@@ -96,7 +96,7 @@ const StepCard: React.FC<StepCardProps> = ({ step }) => (
 )
 
 export default function KeytEvents() {
-  const [activeType, setActiveType] = useState<EventType>("Банкет")
+  const [activeType, setActiveType] = useState<EventType>("Фуршет")
   const steps = STEPS_BY_TYPE[activeType]
 
   return (

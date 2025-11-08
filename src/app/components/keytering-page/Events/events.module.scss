@@ -11,7 +11,6 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 40px 16px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* ---------- Меню ---------- */
@@ -141,16 +140,44 @@
 }
 
 .stepTitle {
-  margin: 0 0 4px;
-  font-size: 15px;
+  font-size: 1.2rem;
   font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .stepDescription {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666666;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+
+    @media (max-width: 992px) {
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 0.9rem;
+    }
 }
 
 /* ---------- Адаптив (мобилка, без margin/gap у таймлайна) ---------- */

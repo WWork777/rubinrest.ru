@@ -1,0 +1,68 @@
+.title {
+  text-align: center;
+  font-size: 2rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
+}
+
+.clientsGrid {
+    margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border: 1px solid #ececec;
+  border-right: none;
+  border-bottom: none;
+
+  @media (max-width: 576px){
+        margin-top: 2rem;
+    }
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  border-right: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+//   background: #fafafa;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+/* ----- Адаптив: постепенно уходим в вертикальный формат ----- */
+
+/* планшет — 4 в ряд */
+@media (max-width: 1024px) {
+  .clientsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* маленький планшет — 3 в ряд */
+@media (max-width: 768px) {
+  .clientsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* крупный мобильный — 2 в ряд */
+@media (max-width: 576px) {
+  .clientsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* узкий мобильный — полностью вертикальный формат (1 колонка) */
+@media (max-width: 400px) {
+  .clientsGrid {
+    grid-template-columns: 1fr;
+  }
+}

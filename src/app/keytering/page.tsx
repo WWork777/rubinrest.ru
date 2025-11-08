@@ -6,7 +6,9 @@ import Includes from "../components/keytering-page/Includes/includes";
 import Work from "../components/keytering-page/Work/work";
 import KeytEvents from "../components/keytering-page/Events/events";
 import Reviews from "../components/main-page/rewievs/rewievs";
+import Clients from "../components/keytering-page/Clients/clients";
 import Contacts from "../components/main-page/contacts/contacts";
+
 
 
 export default function KeyteringPage() {
@@ -22,6 +24,7 @@ export default function KeyteringPage() {
       <Work/>
       <KeytEvents/>
       <Reviews/>
+      <Clients/>
       <Contacts/>
     </>
   );
