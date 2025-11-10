@@ -18,7 +18,7 @@ export default function HeroKeytering() {
         >
           <li>
             <Image
-              src="/hero/pig.svg"
+              src="/hero/service-keyt.svg"
               width={50}
               height={50}
               alt="Иконка без сервисного сбора"
@@ -27,7 +27,7 @@ export default function HeroKeytering() {
           </li>
           <li>
             <Image
-              src="/hero/check.svg"
+              src="/hero/check-keyt.svg"
               width={50}
               height={50}
               alt="Иконка стоимости"
@@ -38,7 +38,7 @@ export default function HeroKeytering() {
           </li>
           <li>
             <Image
-              src="/hero/alcohol.svg"
+              src="/hero/event-keyt.svg"
               width={50}
               height={50}
               alt="Иконка алкоголя"

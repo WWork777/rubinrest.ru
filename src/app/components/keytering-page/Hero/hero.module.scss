@@ -73,7 +73,8 @@
   }
 
   img {
-    width: clamp(40px, 6vw, 55px);
+    width: clamp(45px, 7vw, 60px);
+    min-height: 60px;
     height: auto;
     transition: transform 0.3s ease;
 
