@@ -25,37 +25,34 @@ function Card({
   price,
   onCardClick,
   isKeyteringPage = false,
-  
-}: // showMore,
-CardProps) {
+  showMore = false, // Пропс для показа ссылки "Подробнее"
+}: CardProps) {
   return (
-    <div className={styles.card}>
-      <div className={styles.card_content} onClick={onCardClick}>
+    <div className={`${styles.card} ${isKeyteringPage ? styles.cardKeytering : ''} ${showMore ? styles.card_withMore : ''}`}>
+      <div className={styles.card_content} onClick={!showMore ? onCardClick : undefined}>
         <h3>{title}</h3>
         <span>
-          {people} руб. | {price}
+          {people} | {price}
         </span>
       </div>
       <div
         className={styles.card_image}
         style={{ backgroundImage: `url(${image})` }}
       >
-        {isKeyteringPage ? (
-          // если мы на странице кейтеринга — показываем "Заказать"
+        {/* Показываем кнопку для всех карточек на странице кейтеринга, и для первых двух на главной */}
+        {(isKeyteringPage || !showMore) && (
           <button className={styles.orderButton} onClick={onCardClick}>
-            <span>Заказать</span>
+            <span>{isKeyteringPage ? "Заказать" : "Подробнее"}</span>
           </button>
-        ) : (
-          // если на главной — ссылка "Подробнее"
-          <Link href="/keytering">
-            <button className={styles.orderButton}>
-              <span>Подробнее</span>
-            </button>
-          </Link>
         )}
-        
       </div>
-      {/* {showMore && <span className={styles.card_more}>Подробнее</span>} */}
+      
+      {/* Ссылка "Подробнее" только для третьей карточки на главной странице */}
+      {showMore && (
+        <Link href="/keytering" className={styles.card_more}>
+          Подробнее
+        </Link>
+      )}
     </div>
   );
 }
@@ -385,7 +382,8 @@ export default function Keytering({ isKeyt }: PageProps) {
             price={option.price}
             onCardClick={() => handleCardClick(option.title)}
             isKeyteringPage={isKeyt}
-            // showMore={index === 2} // Показываем "подробнее" только для третьей карточки
+            // Показываем "Подробнее" только для третьей карточки И только на главной странице
+            showMore={index === 2 && !isKeyt}
           />
         ))}
       </div>

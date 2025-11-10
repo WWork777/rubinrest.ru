@@ -57,30 +57,32 @@
   }
 }
 
+
+
 .card {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
 
-  // Стили для третьей карточки (обрезанной)
-  // &:nth-child(3) {
-  //   .card_image {
-  //     height: 350px; // Обрезанная высота для третьей карточки
+  // Стили для третьей карточки (обрезанной) на главной странице
+  &:nth-child(3):not(.cardKeytering) {
+    .card_image {
+      height: 350px; // Обрезанная высота для третьей карточки
 
-  //     @media (max-width: 992px) {
-  //       height: 250px;
-  //     }
+      @media (max-width: 992px) {
+        height: 250px;
+      }
 
-  //     @media (max-width: 768px) {
-  //       height: 270px;
-  //     }
+      @media (max-width: 768px) {
+        height: 270px;
+      }
 
-  //     @media (max-width: 576px) {
-  //       height: 250px;
-  //     }
-  //   }
-  // }
+      @media (max-width: 576px) {
+        height: 250px;
+      }
+    }
+  }
 }
 
 .card_content {
@@ -197,6 +199,7 @@
   backdrop-filter: blur(4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 2;
+  
   span {
     color: black;
     font-weight: 400;
@@ -225,9 +228,10 @@
   }
 }
 
+// Стили для ссылки "Подробнее" (третья карточка на главной)
 .card_more {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   margin-top: 1rem;
   font-size: 1.3rem;
@@ -236,6 +240,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
+  padding: 0.5rem 0;
 
   &:hover {
     color: #333;
@@ -264,6 +269,26 @@
     content: "→";
     margin-left: 0.5rem;
     transition: transform 0.3s ease;
+    font-weight: 400;
+  }
+}
+
+// Специальный класс для страницы кейтеринга
+.card--keytering {
+  .card_image {
+    height: 400px; // Полная высота на странице кейтеринга
+    
+    @media (max-width: 992px) {
+      height: 350px;
+    }
+    
+    @media (max-width: 768px) {
+      height: 300px;
+    }
+    
+    @media (max-width: 576px) {
+      height: 250px;
+    }
   }
 }
 
@@ -563,5 +588,163 @@
     font-size: 1.6rem;
     width: 30px;
     height: 30px;
+  }
+}
+
+
+
+// Добавляем эти стили в существующий SCSS файл
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  // Стили для карточки с ссылкой "Подробнее" (третья карточка на главной)
+  &.card_withMore {
+    .card_image {
+      height: 350px; // Обрезанная высота
+
+      @media (max-width: 992px) {
+        height: 250px;
+      }
+
+      @media (max-width: 768px) {
+        height: 270px;
+      }
+
+      @media (max-width: 576px) {
+        height: 250px;
+      }
+    }
+  }
+}
+
+.card_image {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+  height: 400px; // Стандартная высота для первых двух карточек
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 992px) {
+    height: 350px;
+  }
+
+  @media (max-width: 768px) {
+    height: 300px;
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 576px) {
+    height: 250px;
+    margin-top: 0.5rem;
+  }
+}
+
+// Стили для ссылки "Подробнее" (третья карточка на главной)
+.card_more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding: 0.5rem 0;
+
+  &:hover {
+    color: #333;
+    text-decoration: none;
+
+    &::after {
+      transform: translateX(5px);
+    }
+  }
+
+  @media (max-width: 992px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  &::after {
+    content: "→";
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    font-weight: 400;
+  }
+}
+
+// Остальные существующие стили остаются без изменений
+.orderButton {
+  position: absolute;
+  bottom: 20px;
+  left: 20%;
+  transform: translateX(-50%);
+  background: rgba(247, 206, 84, 0.95);
+  color: #000;
+  border: none;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  
+  span {
+    color: black;
+    font-weight: 400;
+  }
+
+  &:hover {
+    background: rgba(247, 206, 84, 1);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  &:active {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    bottom: 16px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 7px 18px;
+    font-size: 0.85rem;
+    bottom: 12px;
   }
 }
