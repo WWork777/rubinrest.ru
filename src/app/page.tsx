@@ -21,7 +21,7 @@ export default function Home() {
       <Meropriyatiya />
       <Whyus />
       <Rewievs />
-      <Keytering />
+      <Keytering isKeyt={false}/>
       <Form />
       <Contacts />
     </>

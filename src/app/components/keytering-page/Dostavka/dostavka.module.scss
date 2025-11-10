@@ -1,3 +1,7 @@
+.dostavkaSection {
+  padding: 0;
+}
+
 .quiestion {
   display: flex;
   margin: 80px 0 40px;
@@ -84,7 +88,7 @@
 .quiestion__rigth {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  width: 70%;
+  width: 65%;
   padding: 50px 40px;
   display: flex;
   gap: 60px;
@@ -252,7 +256,7 @@
 
     span {
       font-size: 1.1rem;
-      color: #5d6d7e;
+      color: #666666;
       font-weight: 500;
 
       @media (max-width: 1650px) {
@@ -307,7 +311,7 @@
 
     &:hover {
       transform: translateX(5px);
-      border-bottom-color: #f7ce54;
+      border-bottom-color: #f4b400;
     }
 
     span {
@@ -323,7 +327,7 @@
     }
 
     &:hover span {
-      color: #f7ce54;
+      color: #f4b400;
     }
 
     @media (max-width: 768px) {
@@ -342,6 +346,143 @@
   }
 }
 
+// Новые стили для блока доставки
+.deliveryInfo {
+  text-align: center;
+  width: 100%;
+  
+  h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+
+    @media (max-width: 1024px) {
+      font-size: 2.2rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.deliveryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.deliveryFor {
+  font-size: 1.1rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+}
+
+.deliveryPrice {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f4b400;
+  margin: 0;
+  line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+  }
+}
+
+.deliveryNote {
+  font-size: 1rem;
+  color: #27ae60;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.contactLink {
+  text-decoration: none;
+  
+  span {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  &:hover span {
+    color: #f4b400;
+  }
+}
+
+.contactsHeader {
+  margin-bottom: 25px;
+
+  span {
+    font-size: 1.1rem;
+    color: #666666;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
+// Стили модального окна с обновленными цветами
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -377,7 +518,7 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #666;
+  color: #666666;
   transition: color 0.3s ease;
 
   &:hover {
@@ -397,7 +538,7 @@
 }
 
 .modalSubtitle {
-  color: #666;
+  color: #666666;
   font-size: 1rem;
   margin: 0;
 }
@@ -429,7 +570,7 @@
 
     &:focus {
       outline: none;
-      border-color: #f7ce54;
+      border-color: #f4b400;
     }
 
     &:disabled {
@@ -499,8 +640,8 @@
 }
 
 .checkboxInput:checked + .checkboxCustom {
-  background: #f7ce54;
-  border-color: #f7ce54;
+  background: #f4b400;
+  border-color: #f4b400;
 
   &::after {
     opacity: 1;
@@ -508,7 +649,7 @@
 }
 
 .checkboxText {
-  color: #666;
+  color: #666666;
   flex: 1;
 }
 
@@ -526,7 +667,7 @@
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(247, 206, 84, 0.3);
+    box-shadow: 0 8px 20px rgba(244, 180, 0, 0.3);
   }
 
   &:disabled {
@@ -534,6 +675,26 @@
     cursor: not-allowed;
     transform: none;
   }
+}
+
+.successMessage {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.errorMessage {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
 }
 
 // Адаптивность для модального окна

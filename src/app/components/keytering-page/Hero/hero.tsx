@@ -23,7 +23,7 @@ export default function HeroKeytering() {
               height={50}
               alt="Иконка без сервисного сбора"
             />
-            <span>Сервисного сбора</span>
+            <span>Без сервисного сбора</span>
           </li>
           <li>
             <Image

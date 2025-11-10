@@ -1,83 +1,27 @@
 "use client";
 import { useState } from "react";
-import styles from "./styles.module.scss";
+import styles from "./dostavka.module.scss";
+import Image from "next/image";
 import Link from "next/link";
-
-interface CardProps {
-  title: string;
-  image: string;
-  people: string;
-  price: string;
-  onCardClick: () => void;
-  showMore?: boolean;
-  isKeyteringPage?: boolean;
-}
-
-interface PageProps{
-  isKeyt? : boolean;
-}
-
-
-function Card({
-  title,
-  image,
-  people,
-  price,
-  onCardClick,
-  isKeyteringPage = false,
-  
-}: // showMore,
-CardProps) {
-  return (
-    <div className={styles.card}>
-      <div className={styles.card_content} onClick={onCardClick}>
-        <h3>{title}</h3>
-        <span>
-          {people} руб. | {price}
-        </span>
-      </div>
-      <div
-        className={styles.card_image}
-        style={{ backgroundImage: `url(${image})` }}
-      >
-        {isKeyteringPage ? (
-          // если мы на странице кейтеринга — показываем "Заказать"
-          <button className={styles.orderButton} onClick={onCardClick}>
-            <span>Заказать</span>
-          </button>
-        ) : (
-          // если на главной — ссылка "Подробнее"
-          <Link href="/keytering">
-            <button className={styles.orderButton}>
-              <span>Подробнее</span>
-            </button>
-          </Link>
-        )}
-        
-      </div>
-      {/* {showMore && <span className={styles.card_more}>Подробнее</span>} */}
-    </div>
-  );
-}
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  eventTitle: string;
 }
 
 interface FormErrors {
   name?: string;
   phone?: string;
   privacyPolicy?: string;
+  comment?: string;
 }
 
-function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
+function Modal({ isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     comment: "",
-    privacyPolicy: true,
+    privacyPolicy: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -89,7 +33,6 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type } = e.target;
-    const key = name as keyof FormErrors;
 
     if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
@@ -97,7 +40,7 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
-
+    const key = name as keyof FormErrors;
     if (errors[key]) {
       setErrors((prev) => ({ ...prev, [key]: "" }));
     }
@@ -109,8 +52,6 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
   const validateName = (name: string) => {
     if (!name.trim()) return "Имя обязательно для заполнения";
     if (name.trim().length < 2) return "Имя должно содержать минимум 2 символа";
-    if (!/^[a-zA-Zа-яА-ЯёЁ\s\-]+$/.test(name))
-      return "Имя может содержать только буквы, пробелы и дефисы";
     return "";
   };
 
@@ -124,7 +65,7 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
   };
 
   const validateForm = () => {
-    const newErrors = {
+    const newErrors: FormErrors = {
       name: validateName(formData.name),
       phone: validatePhone(formData.phone),
       privacyPolicy: formData.privacyPolicy
@@ -157,7 +98,9 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = formatPhone(e.target.value);
+    let value = e.target.value;
+    value = value.replace(/[^\d+\s]/g, "");
+    const formattedValue = formatPhone(value);
     setFormData((prev) => ({ ...prev, phone: formattedValue }));
 
     if (errors.phone) {
@@ -179,14 +122,12 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
     setSubmitStatus(null);
 
     try {
-      // Отправляем данные через наш API route
-      const response = await fetch("/api/catering", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          eventTitle,
           name: formData.name.trim(),
           phone: formData.phone,
           comment: formData.comment.trim(),
@@ -200,17 +141,15 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
       }
 
       setSubmitStatus("success");
-      console.log("Заявка успешно отправлена:", data);
+      console.log("Заявка успешно отправлена в Telegram:", data);
 
-      // Закрываем модальное окно через 2 секунды после успешной отправки
       setTimeout(() => {
         onClose();
-        // Сбрасываем форму
         setFormData({
           name: "",
           phone: "",
           comment: "",
-          privacyPolicy: true,
+          privacyPolicy: false,
         });
         setSubmitStatus(null);
       }, 2000);
@@ -232,8 +171,8 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
         </button>
 
         <div className={styles.modalHeader}>
-          <h2>Задать вопрос</h2>
-          <p>По кейтерингу: {eventTitle}</p>
+          <h2>Узнать подробнее</h2>
+          <p className={styles.modalSubtitle}>Мы обязательно вам перезвоним</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.modalForm}>
@@ -293,14 +232,8 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
               />
               <span className={styles.checkboxCustom}></span>
               <span className={styles.checkboxText}>
-                Я соглашаюсь на обработку персональных данных согласно{" "}
-                <a
-                  href="/privacy-policy"
-                  target="_blank"
-                  className={styles.privacyLink}
-                >
-                  политике конфиденциальности
-                </a>
+                Я согласен с Политикой обработки персональных данных и даю
+                согласие на обработку персональных данных
               </span>
             </label>
             {errors.privacyPolicy && (
@@ -308,7 +241,6 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
             )}
           </div>
 
-          {/* Статус отправки */}
           {submitStatus === "success" && (
             <div className={styles.successMessage}>
               ✅ Заявка успешно отправлена!
@@ -333,68 +265,112 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
   );
 }
 
-export default function Keytering({ isKeyt }: PageProps) {
-  const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default function Dostavka(){
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const cateringOptions = [
-    {
-      image: "/keytering/1.webp",
-      title: "Банкет на юбилей",
-      people: "70 человек",
-      price: "120 000 руб.",
-    },
-    {
-      image: "/keytering/2.webp",
-      title: "Фуршет на день рождения",
-      people: "35 человек",
-      price: "50 000 руб.",
-    },
-    {
-      image: "/keytering/3.webp",
-      title: "Банкет на свадьбу",
-      people: "70 человек",
-      price: "120 000 руб.",
-    },
-  ];
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
 
-  const handleCardClick = (title: string) => {
-    setSelectedEvent(title);
-    setIsModalOpen(true);
-  };
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedEvent(null);
-  };
+    return(
+        <section className={styles.dostavkaSection}>
+            <div className={styles.quiestion}>
+                <div className={styles.quiestion__left}>
+                    <div className={styles.deliveryInfo}>
+                        <h3>Доставка готовой еды</h3>
+                        <div className={styles.deliveryDetails}>
+                            <p className={styles.deliveryFor}>на день рождения и другие мероприятия</p>
+                            <p className={styles.deliveryPrice}>от 3000 ₽</p>
+                            <p className={styles.deliveryNote}>Работаем даже для одного человека</p>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.quiestion__rigth}>
+                    <div className={styles.quiestion__rigth_left}>
+                        <div className={styles.manager}>
+                            <span>Менеджер ответит на ваши вопросы</span>
+                        </div>
+                        <div className={styles.buttonContainer}>
+                            <button className={styles.button} onClick={handleOpenModal}>
+                                <span>УЗНАТЬ ПОДРОБНЕЕ</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div className={styles.quiestion__rigth_rigth}>
+                        <div className={styles.contactsHeader}>
+                            <span>Свяжитесь с нами, любым удобным способом:</span>
+                        </div>
+                        <div className={styles.contacts}>
+                            <div className={styles.contactRow}>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactIcon}>
+                                        <Image
+                                            src={"/socials/wa.svg"}
+                                            alt="WhatsApp"
+                                            height={20}
+                                            width={20}
+                                        />
+                                    </div>
+                                    <Link
+                                        href="https://api.whatsapp.com/send/?phone=79138154130&text&type=phone_number&app_absent=0"
+                                        target="_blank"
+                                        className={styles.contactLink}
+                                    >
+                                        <span>Чат в WhatsApp</span>
+                                    </Link>
+                                </div>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactIcon}>
+                                        <Image
+                                            src={"/socials/phone.svg"}
+                                            alt="Телефон"
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </div>
+                                    <Link href="tel:+79935714130" className={styles.contactLink}>
+                                        <span>+7 993 571-41-30</span>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className={styles.contactRow}>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactIcon}>
+                                        <Image
+                                            src={"/socials/tg.svg"}
+                                            alt="Telegram"
+                                            height={20}
+                                            width={20}
+                                        />
+                                    </div>
+                                    <Link href="https://t.me/zayavka_rest" target="_blank" className={styles.contactLink}>
+                                        <span>Чат в Telegram</span>
+                                    </Link>
+                                </div>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactIcon}>
+                                        <Image
+                                            src={"/socials/mail.svg"}
+                                            alt="Email"
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </div>
+                                    <Link href="mailto:rubinrest70@gmail.com" target="_blank" className={styles.contactLink}>
+                                        <span>rubinrest70@gmail.com</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  return (
-    <section className="container" id="keytering">
-      <h2 className={styles.title}>Кейтеринг</h2>
-      <p className={styles.subTitle}>
-        Превратим любое пространство в изысканный ресторан с нашей атмосферой,
-        кухней и сервисом
-      </p>
-      <div className={styles.grid}>
-        {cateringOptions.map((option, index) => (
-          <Card
-            key={index}
-            image={option.image}
-            title={option.title}
-            people={option.people}
-            price={option.price}
-            onCardClick={() => handleCardClick(option.title)}
-            isKeyteringPage={isKeyt}
-            // showMore={index === 2} // Показываем "подробнее" только для третьей карточки
-          />
-        ))}
-      </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        eventTitle={selectedEvent || ""}
-      />
-    </section>
-  );
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+        </section>
+    );
 }

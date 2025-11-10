@@ -5,6 +5,7 @@ import Questions from "../components/main-page/questions/questions";
 import Includes from "../components/keytering-page/Includes/includes";
 import Work from "../components/keytering-page/Work/work";
 import KeytEvents from "../components/keytering-page/Events/events";
+import Dostavka from "../components/keytering-page/Dostavka/dostavka";
 import Reviews from "../components/main-page/rewievs/rewievs";
 import Clients from "../components/keytering-page/Clients/clients";
 import Contacts from "../components/main-page/contacts/contacts";
@@ -15,14 +16,19 @@ export default function KeyteringPage() {
   return (
     <>
       <HeroKeytering />
-      <Keytering/>
+      <Keytering isKeyt={true}/>
       <Portfolio/>
       <section className="container" style={{paddingTop:"0px"}}>
         <Questions/>
       </section>
       <Includes/>
       <Work/>
+      
       <KeytEvents/>
+      <section className="container" style={{paddingTop:"0px"}}>
+        <Dostavka/>
+      </section>
+      
       <Reviews/>
       <Clients/>
       <Contacts/>
