@@ -11,26 +11,26 @@ interface CateringItem {
 const cateringData: CateringItem[] = [
   {
     title: "Банкет на юбилей",
-    people: "70 человек",
-    price: "120 000 руб.",
+    people: "30 человек",
+    price: "87 000 руб.",
     image: "/portfolio/port1.webp",
   },
   {
     title: "Фуршет на день рождения",
-    people: "35 человек",
-    price: "50 000 руб.",
+    people: "3 человека",
+    price: "5 000 руб.",
     image: "/portfolio/port2.webp",
   },
   {
     title: "Банкет на свадьбу",
     people: "70 человек",
-    price: "120 000 руб.",
+    price: "203 000 руб.",
     image: "/portfolio/port3.webp",
   },
   {
     title: "Кофе брейк",
     people: "45 человек",
-    price: "50 000 руб.",
+    price: "40 000 руб.",
     image: "/portfolio/port4.webp",
   },
 ];

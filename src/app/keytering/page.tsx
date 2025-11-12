@@ -1,4 +1,6 @@
 import HeroKeytering from "../components/keytering-page/Hero/hero";
+import Furshet from "../components/keytering-page/Furshet/furshet";
+import Variants from "../components/keytering-page/Variants/variants";
 import Keytering from "../components/main-page/keytering/keytering";
 import Portfolio from "../components/keytering-page/Portfolio/portfolio";
 import Questions from "../components/main-page/questions/questions";
@@ -16,7 +18,9 @@ export default function KeyteringPage() {
   return (
     <>
       <HeroKeytering />
-      <Keytering isKeyt={true}/>
+      <Furshet/>
+      <Variants/>
+      {/* <Keytering isKeyt={true}/> */}
       <Portfolio/>
       <section className="container" style={{paddingTop:"0px"}}>
         <Questions/>
