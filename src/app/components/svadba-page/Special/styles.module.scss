@@ -1,0 +1,63 @@
+.special {
+    padding: 0 16.5vw;
+    .title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 54px;
+    }
+    .specialCon {
+        width: 100%;
+        display: flex;
+        gap: 50px;
+        margin-top: 40px;
+        .specialText {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            .textCon {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                .textTitleCon {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px; 
+                    .textTitle {
+                        font-weight: 700;
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+                }
+                .text {
+                   font-weight: 500;
+                   font-size: 16px;
+                   line-height: 1.4; 
+                }
+            }
+        }
+        .specialImg {
+            width: 50%;
+            display: flex;
+            gap: 13px;
+            .firstImg {
+                width: 50%;
+            }
+            .rowImage {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                .imgOne {
+                    width: 100%;
+                    height: auto;
+                }
+                .imgTwo {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
