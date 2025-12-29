@@ -63,8 +63,8 @@ export default function Header() {
             <a href="#ivents">События</a>
             <a href="#banquet">Залы</a>
             <a href="#tabs">Меню</a>
-            <a href="#choose">Почему мы</a>
             <a href="#reviews">Отзывы</a>
+            <Link href="/svadba">Свадьба</Link>
             <a href="keytering">Кейтеринг</a>
             <a href="#contact">Контакты</a>
           </nav>
@@ -139,12 +139,12 @@ export default function Header() {
             <a href="#tabs" onClick={() => setMenuOpen(false)}>
               Меню
             </a>
-            <a href="#choose" onClick={() => setMenuOpen(false)}>
-              Почему мы
-            </a>
             <a href="#reviews" onClick={() => setMenuOpen(false)}>
               Отзывы
             </a>
+            <Link href="/svadba" onClick={() => setMenuOpen(false)}>
+              Свадьба
+            </Link>
             <a href="keytering" onClick={() => setMenuOpen(false)}>
               Кейтеринг
             </a>
