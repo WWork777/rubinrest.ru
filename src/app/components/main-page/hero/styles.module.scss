@@ -99,7 +99,7 @@
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease 0.5s forwards;
-
+  margin-top: auto;
   &:hover {
     background: #e7c21c;
     transform: translateY(-2px);
@@ -140,6 +140,7 @@
     width: 100%;
     justify-content: center;
     text-align: center;
+    margin: 0 auto;
   }
 }
 

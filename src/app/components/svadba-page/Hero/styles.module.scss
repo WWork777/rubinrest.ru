@@ -123,6 +123,9 @@
   .heroContent {
     align-items: flex-start;
     gap: 2rem;
+    justify-content: space-between;
+     min-height: 85vh;
+
   }
 
   .benefits {

@@ -161,7 +161,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className={styles.contactUs}>
+    <section id="contactus" className={styles.contactUs}>
       <div className={styles.container}>
         <div className={styles.imageSection}>
           <Image

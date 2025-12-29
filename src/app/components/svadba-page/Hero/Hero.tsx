@@ -45,7 +45,7 @@ export default function Hero() {
           </li>
         </ul> */}
 
-        <Link href="#quiz" className={styles.ctaButton}>
+        <Link href="#contactus" className={styles.ctaButton}>
           <span>Узнать стоимость моего банкета</span>
         </Link>
       </div>
