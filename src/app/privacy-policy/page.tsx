@@ -126,7 +126,7 @@ export default function PrivacyPolicy() {
             <p>
               <strong>Ресторан «Рубин»</strong>
             </p>
-            <p>Телефон: +7 993 571-41-30</p>
+            <p>Телефон: +7 952 153-49-90</p>
             <p>Email: rubinrest70@gmail.ru</p>
             {/* <p>Адрес: [укажите юридический адрес ресторана]</p> */}
           </div>

@@ -26,11 +26,11 @@ function Modal({ isOpen, onClose }: ModalProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
-    null
+    null,
   );
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
 
@@ -265,112 +265,124 @@ function Modal({ isOpen, onClose }: ModalProps) {
   );
 }
 
-export default function Dostavka(){
-    const [isModalOpen, setIsModalOpen] = useState(false);
+export default function Dostavka() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleOpenModal = () => {
-        setIsModalOpen(true);
-    };
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
-    return(
-        <section className={styles.dostavkaSection}>
-            <div className={styles.quiestion}>
-                <div className={styles.quiestion__left}>
-                    <div className={styles.deliveryInfo}>
-                        <h3>Доставка готовой еды</h3>
-                        <div className={styles.deliveryDetails}>
-                            <p className={styles.deliveryFor}>на день рождения и другие мероприятия</p>
-                            <p className={styles.deliveryPrice}>от 3000 ₽</p>
-                            <p className={styles.deliveryNote}>Работаем даже для одного человека</p>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.quiestion__rigth}>
-                    <div className={styles.quiestion__rigth_left}>
-                        <div className={styles.manager}>
-                            <span>Менеджер ответит на ваши вопросы</span>
-                        </div>
-                        <div className={styles.buttonContainer}>
-                            <button className={styles.button} onClick={handleOpenModal}>
-                                <span>УЗНАТЬ ПОДРОБНЕЕ</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div className={styles.quiestion__rigth_rigth}>
-                        <div className={styles.contactsHeader}>
-                            <span>Свяжитесь с нами, любым удобным способом:</span>
-                        </div>
-                        <div className={styles.contacts}>
-                            <div className={styles.contactRow}>
-                                <div className={styles.contactItem}>
-                                    <div className={styles.contactIcon}>
-                                        <Image
-                                            src={"/socials/wa.svg"}
-                                            alt="WhatsApp"
-                                            height={20}
-                                            width={20}
-                                        />
-                                    </div>
-                                    <Link
-                                        href="https://api.whatsapp.com/send/?phone=79138154130&text&type=phone_number&app_absent=0"
-                                        target="_blank"
-                                        className={styles.contactLink}
-                                    >
-                                        <span>Чат в WhatsApp</span>
-                                    </Link>
-                                </div>
-                                <div className={styles.contactItem}>
-                                    <div className={styles.contactIcon}>
-                                        <Image
-                                            src={"/socials/phone.svg"}
-                                            alt="Телефон"
-                                            width={20}
-                                            height={20}
-                                        />
-                                    </div>
-                                    <Link href="tel:+79935714130" className={styles.contactLink}>
-                                        <span>+7 993 571-41-30</span>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className={styles.contactRow}>
-                                <div className={styles.contactItem}>
-                                    <div className={styles.contactIcon}>
-                                        <Image
-                                            src={"/socials/tg.svg"}
-                                            alt="Telegram"
-                                            height={20}
-                                            width={20}
-                                        />
-                                    </div>
-                                    <Link href="https://t.me/zayavka_rest" target="_blank" className={styles.contactLink}>
-                                        <span>Чат в Telegram</span>
-                                    </Link>
-                                </div>
-                                <div className={styles.contactItem}>
-                                    <div className={styles.contactIcon}>
-                                        <Image
-                                            src={"/socials/mail.svg"}
-                                            alt="Email"
-                                            width={20}
-                                            height={20}
-                                        />
-                                    </div>
-                                    <Link href="mailto:rubinrest70@gmail.com" target="_blank" className={styles.contactLink}>
-                                        <span>rubinrest70@gmail.com</span>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <section className={styles.dostavkaSection}>
+      <div className={styles.quiestion}>
+        <div className={styles.quiestion__left}>
+          <div className={styles.deliveryInfo}>
+            <h3>Доставка готовой еды</h3>
+            <div className={styles.deliveryDetails}>
+              <p className={styles.deliveryFor}>
+                на день рождения и другие мероприятия
+              </p>
+              <p className={styles.deliveryPrice}>от 3000 ₽</p>
+              <p className={styles.deliveryNote}>
+                Работаем даже для одного человека
+              </p>
             </div>
+          </div>
+        </div>
+        <div className={styles.quiestion__rigth}>
+          <div className={styles.quiestion__rigth_left}>
+            <div className={styles.manager}>
+              <span>Менеджер ответит на ваши вопросы</span>
+            </div>
+            <div className={styles.buttonContainer}>
+              <button className={styles.button} onClick={handleOpenModal}>
+                <span>УЗНАТЬ ПОДРОБНЕЕ</span>
+              </button>
+            </div>
+          </div>
+          <div className={styles.quiestion__rigth_rigth}>
+            <div className={styles.contactsHeader}>
+              <span>Свяжитесь с нами, любым удобным способом:</span>
+            </div>
+            <div className={styles.contacts}>
+              <div className={styles.contactRow}>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <Image
+                      src={"/socials/wa.svg"}
+                      alt="WhatsApp"
+                      height={20}
+                      width={20}
+                    />
+                  </div>
+                  <Link
+                    href="https://api.whatsapp.com/send/?phone=79138154130&text&type=phone_number&app_absent=0"
+                    target="_blank"
+                    className={styles.contactLink}
+                  >
+                    <span>Чат в WhatsApp</span>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <Image
+                      src={"/socials/phone.svg"}
+                      alt="Телефон"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <Link href="tel:+79935714130" className={styles.contactLink}>
+                    <span>+7 952 153-49-90</span>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.contactRow}>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <Image
+                      src={"/socials/tg.svg"}
+                      alt="Telegram"
+                      height={20}
+                      width={20}
+                    />
+                  </div>
+                  <Link
+                    href="https://t.me/zayavka_rest"
+                    target="_blank"
+                    className={styles.contactLink}
+                  >
+                    <span>Чат в Telegram</span>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}>
+                    <Image
+                      src={"/socials/mail.svg"}
+                      alt="Email"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+                  <Link
+                    href="mailto:rubinrest70@gmail.com"
+                    target="_blank"
+                    className={styles.contactLink}
+                  >
+                    <span>rubinrest70@gmail.com</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
-        </section>
-    );
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </section>
+  );
 }

@@ -26,8 +26,8 @@ export default function Contacts() {
               width={14}
               height={14}
             />
-            <Link href={"tel:+7 993 571-41-30"}>
-              <span>+7 993 571-41-30</span>
+            <Link href={"tel:+7 952 153-49-90"}>
+              <span>+7 952 153-49-90</span>
             </Link>
           </div>
         </div>
