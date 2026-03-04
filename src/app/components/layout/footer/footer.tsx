@@ -54,6 +54,7 @@ export default function Footer() {
       {/* Добавляем блок с копирайтом */}
       <div className={styles.footer__bottom}>
         <span>© 2025 Ресторан «Рубин». Все права защищены.</span>
+        <a href="https://virlab42.ru">Сайт разработан компанией <span>Вирлаб</span></a>
       </div>
     </section>
   );
