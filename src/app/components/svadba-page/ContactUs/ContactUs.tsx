@@ -14,6 +14,7 @@ export default function ContactUs() {
     name: '',
     phone: '',
     comment: '',
+    date: '',
     privacyPolicy: false,
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -130,6 +131,7 @@ export default function ContactUs() {
           name: formData.name.trim(),
           phone: formData.phone,
           comment: formData.comment.trim(),
+          date: formData.date,
         }),
       });
 
@@ -148,6 +150,7 @@ export default function ContactUs() {
           name: '',
           phone: '',
           comment: '',
+          date: '',
           privacyPolicy: false,
         });
         setSubmitStatus(null);
@@ -221,6 +224,16 @@ export default function ContactUs() {
                 {errors.phone && (
                   <span className={styles.errorText}>{errors.phone}</span>
                 )}
+              </div>
+
+              <div className={styles.inputGroup}>
+                <input
+                  type='date'
+                  name='date'
+                  value={formData.date}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                />
               </div>
 
               <div className={styles.inputGroup}>

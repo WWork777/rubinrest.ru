@@ -13,6 +13,7 @@ export default function Form() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    date: "",
     message: "",
     agreement: false,
   });
@@ -126,6 +127,7 @@ export default function Form() {
         body: JSON.stringify({
           name: formData.name.trim(),
           phone: formData.phone,
+          date: formData.date,
           comment: formData.message.trim(),
           source: "contact_form", // Добавляем источник заявки
         }),
@@ -145,6 +147,7 @@ export default function Form() {
         setFormData({
           name: "",
           phone: "",
+          date: "",
           message: "",
           agreement: false,
         });
@@ -195,6 +198,17 @@ export default function Form() {
             {errors.phone && (
               <span className={styles.errorText}>{errors.phone}</span>
             )}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              className={styles.dateInput}
+              disabled={isSubmitting}
+            />
           </div>
 
           <div className={styles.inputGroup}>

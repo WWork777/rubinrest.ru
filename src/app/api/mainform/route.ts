@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, phone, comment, source = "unknown" } = await request.json();
+    const { name, phone, date, comment, source = "unknown" } = await request.json();
 
     // Валидация данных
     if (!name || !phone) {
@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
 👤 <b>Имя:</b> ${name}
 📱 <b>Телефон:</b> ${phone}
 💬 <b>Сообщение:</b> ${comment || "Не указано"}
+🕓 <b>Дата:</b> ${date || "Не указано"}
  `.trim();
 
     // Отправляем в Telegram

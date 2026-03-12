@@ -74,6 +74,7 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
     name: "",
     phone: "",
     comment: "",
+    date: "",
     privacyPolicy: true,
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -187,6 +188,7 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
           name: formData.name.trim(),
           phone: formData.phone,
           comment: formData.comment.trim(),
+          date: formData.date,
         }),
       });
 
@@ -207,6 +209,7 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
           name: "",
           phone: "",
           comment: "",
+          date: "",
           privacyPolicy: true,
         });
         setSubmitStatus(null);
@@ -264,6 +267,17 @@ function Modal({ isOpen, onClose, eventTitle }: ModalProps) {
             {errors.phone && (
               <span className={styles.errorText}>{errors.phone}</span>
             )}
+          </div>
+
+          <div className={styles.inputGroup}>
+            <label>Желаемая дата</label>
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              disabled={isSubmitting}
+            />
           </div>
 
           <div className={styles.inputGroup}>

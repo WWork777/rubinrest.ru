@@ -13,6 +13,7 @@ export default function Quiz() {
     customBudget: "",
     services: [],
     name: "",
+    date: "",
     contact: "",
     contactType: "phone",
     privacyPolicy: true,
@@ -272,6 +273,7 @@ export default function Quiz() {
 • Дополнительные услуги: ${data.services.join(", ") || "Не выбрано"}
 • ИТОГОВАЯ СТОИМОСТЬ: ${calculatePrice().toLocaleString()} ₽
 • ПОДАРОК: 3000 ₽
+• ЖЕЛАЕМАЯ ДАТА: ${data.date || "Не указана"}
 
 👤 КОНТАКТНЫЕ ДАННЫЕ:
 • Имя: ${data.name}
@@ -575,6 +577,17 @@ export default function Quiz() {
           disabled={isSubmitting}
         />
         {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label>Желаемая дата</label>
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleContactChange}
+          disabled={isSubmitting}
+        />
       </div>
 
       <div className={styles.contactType}>
