@@ -341,32 +341,32 @@ export default function Events() {
         <Card
           title="СВАДЬБА"
           image="/ivents/ivent1.webp"
-          onCardClick={() => handleCardClick("СВАДЬБА")}
+          onCardClick={() => window.location.href = '/svadba'}
         />
         <Card
           title="ВЫПУСКНОЙ"
           image="/ivents/ivent2.webp"
-          onCardClick={() => handleCardClick("ВЫПУСКНОЙ")}
+          onCardClick={() => window.location.href = '/vypusknoy'}
         />
         <Card
           title="ФУРШЕТ"
           image="/ivents/ivent3.webp"
-          onCardClick={() => handleCardClick("ФУРШЕТ")}
+          onCardClick={() => window.location.href = '/furshet'}
         />
         <Card
           title="ЮБИЛЕЙ"
           image="/ivents/ivent4.webp"
-          onCardClick={() => handleCardClick("ЮБИЛЕЙ")}
+          onCardClick={() => window.location.href = '/yubiley'}
         />
         <Card
           title="БАНКЕТ"
           image="/ivents/ivent5.webp"
-          onCardClick={() => handleCardClick("БАНКЕТ")}
+          onCardClick={() => window.location.href = '/banket'}
         />
         <Card
           title="ВЫЕЗДНАЯ РЕГИСТРАЦИЯ"
           image="/ivents/ivent6.webp"
-          onCardClick={() => handleCardClick("ВЫЕЗДНАЯ РЕГИСТРАЦИЯ")}
+          onCardClick={() => window.location.href = '/registraciya'}
         />
       </div>
 

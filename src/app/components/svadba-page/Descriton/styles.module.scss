@@ -1,44 +1,71 @@
 .description {
-    padding: 90px 0;
-    text-align: center;
+    padding: clamp(60px, 10vw, 120px) 0;
+    text-align: left;
     color: #222;
+    overflow: hidden;
+
     .title {
         font-weight: 700;
-        font-size: 48px;
+        font-size: clamp(32px, 5vw, 56px);
         line-height: 54px;
-        @media (max-width: 480px) {
-            font-size: 28px;
-            line-height: 34px;
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        
+        &::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #efce36;
+            margin: 20px auto 0;
         }
     }
+
     .firstDesc, .lastDesc {
         color: #323232;
-        margin: auto;
         font-weight: 400;
-        font-size: 22px;
+        font-size: clamp(18px, 2vw, 22px);
         line-height: 1.75;
-        @media (max-width: 480px) {
-            font-size: 18px;
+        position: relative;
+        padding: 20px;
+        transition: all 0.4s ease;
+        
+
+        &:hover {
+            background: rgba(239, 206, 54, 0.15) !important;
+            transform: translate(-2px, -2px);
         }
     }
+
     .firstDesc {
-        width: 50%;
-        margin-top: 72px;  
-        @media (max-width: 1024px) {
-            width: 80%;
-        }
-        @media (max-width: 480px) {
-            margin-top: 20px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 60%;
+        margin: 60px auto 0 10%;
+        border-left: 3px solid #efce36;
+        // background: rgba(239, 206, 54, 0.05);
+
+        @media (max-width: 768px) {
+            width: 90%;
+            margin: 40px auto;
         }
     }
+
     .lastDesc {
-        width: 55%;
-        margin-top: 50px;
-        @media (max-width: 1024px) {
-            width: 85%;
-        }
-        @media (max-width: 480px) {
-            margin-top: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        width: 60%;
+        margin: 20px 10% 0 auto;
+        text-align: right;
+        border-right: 3px solid #efce36;
+
+        @media (max-width: 768px) {
+            width: 90%;
+            margin: 30px auto;
+            text-align: left;
+            border-right: none;
+            border-left: 3px solid #efce36;
         }
     }
 }

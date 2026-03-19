@@ -1,0 +1,16 @@
+.contactsWrapper {
+  margin-top: 80px;
+
+  @media (max-width: 1024px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 50px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px;
+  }
+}
+
