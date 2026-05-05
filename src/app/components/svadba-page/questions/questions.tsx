@@ -326,19 +326,19 @@ export default function Questions() {
             <div className={styles.contacts}>
               <div className={styles.contactRow}>
                 <div className={styles.contactItem}>
-                  <Image
-                    src={"/socials/wa.svg"}
+                                  <Image
+                    src={"/socials/MAX.svg"}
                     alt="wa"
                     height={20}
                     width={20}
                   />
                   <Link
                     href={
-                      "https://api.whatsapp.com/send/?phone=79234053399&text&type=phone_number&app_absent=0"
+                      "https://api.whatsapp.com/send/?phone=79138154130&text&type=phone_number&app_absent=0"
                     }
                     target="_blanc"
                   >
-                    <span>Чат в Whatsapp</span>
+                    <span>Чат в Max</span>
                   </Link>
                 </div>
                 <div className={styles.contactItem}>

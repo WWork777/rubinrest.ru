@@ -326,7 +326,7 @@ export default function Questions() {
               <div className={styles.contactRow}>
                 <div className={styles.contactItem}>
                   <Image
-                    src={"/socials/wa.svg"}
+                    src={"/socials/MAX.svg"}
                     alt="wa"
                     height={20}
                     width={20}
@@ -337,7 +337,7 @@ export default function Questions() {
                     }
                     target="_blanc"
                   >
-                    <span>Чат в Whatsapp</span>
+                    <span>Чат в Max</span>
                   </Link>
                 </div>
                 <div className={styles.contactItem}>

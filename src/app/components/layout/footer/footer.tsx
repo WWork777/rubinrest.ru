@@ -39,10 +39,10 @@ export default function Footer() {
           <p>МЫ В СОЦСЕТЯХ</p>
           <div>
             <Link
-              href="https://api.whatsapp.com/send/?phone=79138154130&text&type=phone_number&app_absent=0"
+              href="https://max.ru/u/f9LHodD0cOIgzORZcJvzJHXs9lIGUPxqjvrQprD8KNYlgYV6Hk8WBYAayNg"
               target="_blanc"
             >
-              <Image src="/footer/wa.svg" width={40} height={40} alt="wa" />
+              <Image src="/socials/MAX.svg" width={40} height={40} alt="wa" />
             </Link>
             <Link href="https://t.me/zayavka_rest" target="_blanc">
               <Image src="/footer/tg.svg" width={40} height={40} alt="tg" />

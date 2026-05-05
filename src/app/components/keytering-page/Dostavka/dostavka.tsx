@@ -328,7 +328,7 @@ export default function Dostavka() {
                 <div className={styles.contactItem}>
                   <div className={styles.contactIcon}>
                     <Image
-                      src={"/socials/wa.svg"}
+                      src={"/socials/MAX.svg"}
                       alt="WhatsApp"
                       height={20}
                       width={20}
@@ -339,7 +339,8 @@ export default function Dostavka() {
                     target="_blank"
                     className={styles.contactLink}
                   >
-                    <span>Чат в WhatsApp</span>
+                    <span>Чат в Max</span>
+                                     
                   </Link>
                 </div>
                 <div className={styles.contactItem}>

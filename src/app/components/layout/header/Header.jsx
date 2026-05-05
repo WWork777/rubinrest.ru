@@ -73,9 +73,9 @@ export default function Header() {
           <div className={styles.actions}>
             <div className={styles.contacts}>
               <div className={styles.socials}>
-                <Link href="https://wa.me/79138154130" target="_blank">
+                <Link href="https://max.ru/u/f9LHodD0cOIgzORZcJvzJHXs9lIGUPxqjvrQprD8KNYlgYV6Hk8WBYAayNg" target="_blank">
                   <Image
-                    src="/socials/wa.svg"
+                    src="/socials/MAX.svg"
                     alt="WA"
                     width={24}
                     height={24}
