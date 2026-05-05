@@ -371,8 +371,8 @@ export default function Questions() {
                     width={20}
                     height={20}
                   />
-                  <Link href="mailto:rubinrest70@gmail.ru" target="_blanc">
-                    <span>rubinrest70@gmail.ru</span>
+                  <Link href="mailto:rubinrest70@gmail.com" target="_blanc">
+                    <span>rubinrest70@gmail.com</span>
                   </Link>
                 </div>
               </div>

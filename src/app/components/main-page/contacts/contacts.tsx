@@ -40,8 +40,8 @@ export default function Contacts() {
               width={14}
               height={14}
             />
-            <Link href={"mailto:rubinrest70@gmail.ru"}>
-              <span>rubinrest70@gmail.ru</span>
+            <Link href={"mailto:rubinrest70@gmail.com"}>
+              <span>rubinrest70@gmail.com</span>
             </Link>
           </div>
         </div>

@@ -27,11 +27,11 @@ function Modal({ isOpen, onClose }: ModalProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
-    null
+    null,
   );
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
 
@@ -288,102 +288,101 @@ function Modal({ isOpen, onClose }: ModalProps) {
   );
 }
 
-export default function Questions(){
-    const [isModalOpen, setIsModalOpen] = useState(false);
+export default function Questions() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleOpenModal = () => {
-        setIsModalOpen(true);
-    };
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
-    return(
-        <section>
-            <div className={styles.quiestion}>
-                <div className={styles.quiestion__left}>
-                <h3>
-                    Остались <br></br> вопросы?
-                </h3>
-                </div>
-                <div className={styles.quiestion__rigth}>
-                <div className={styles.quiestion__rigth_left}>
-                    <div className={styles.manager}>
-                    <Image src={"/socials/olga.png"} height={94} width={94} alt="" />
-                    <span>Менеджер Ольга ответит на ваши вопросы</span>
-                    </div>
-                    <div>
-                    <button className={styles.button} onClick={handleOpenModal}>
-                        <span>УЗНАТЬ ПОДРОБНЕЕ</span>
-                    </button>
-                    </div>
-                </div>
-                <div className={styles.quiestion__rigth_rigth}>
-                    <div>
-                    <span>Свяжитесь с нами, любым удобным способом:</span>
-                    </div>
-                    <div className={styles.contacts}>
-                    <div className={styles.contactRow}>
-                        <div className={styles.contactItem}>
-                        <Image
-                            src={"/socials/wa.svg"}
-                            alt="wa"
-                            height={20}
-                            width={20}
-                        />
-                        <Link
-                            href={
-                            "https://api.whatsapp.com/send/?phone=79234053399&text&type=phone_number&app_absent=0"
-                            }
-                            target="_blanc"
-                        >
-                            <span>Чат в Whatsapp</span>
-                        </Link>
-                        </div>
-                        <div className={styles.contactItem}>
-                        <Image
-                            src={"/socials/phone.svg"}
-                            alt="phone"
-                            width={20}
-                            height={20}
-                        />
-                        <Link href="tel:+7 923 405 33 99">
-                            <span>+7 923 405-33-99</span>
-                        </Link>
-                        </div>
-                    </div>
-                    <div className={styles.contactRow}>
-                        <div className={styles.contactItem}>
-                        <Image
-                            src={"/socials/tg.svg"}
-                            alt="tg"
-                            height={20}
-                            width={20}
-                        />
-                        <Link href="https://t.me/zayavka_rest" target="_blanc">
-                            <span>Чат в Telegram</span>
-                        </Link>
-                        </div>
-                        <div className={styles.contactItem}>
-                        <Image
-                            src={"/socials/mail.svg"}
-                            alt="mail"
-                            width={20}
-                            height={20}
-                        />
-                        <Link href="mailto:rubinrest70@gmail.ru" target="_blanc">
-                            <span>rubinrest70@gmail.ru</span>
-                        </Link>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
+  return (
+    <section>
+      <div className={styles.quiestion}>
+        <div className={styles.quiestion__left}>
+          <h3>
+            Остались <br></br> вопросы?
+          </h3>
+        </div>
+        <div className={styles.quiestion__rigth}>
+          <div className={styles.quiestion__rigth_left}>
+            <div className={styles.manager}>
+              <Image src={"/socials/olga.png"} height={94} width={94} alt="" />
+              <span>Менеджер Ольга ответит на ваши вопросы</span>
             </div>
+            <div>
+              <button className={styles.button} onClick={handleOpenModal}>
+                <span>УЗНАТЬ ПОДРОБНЕЕ</span>
+              </button>
+            </div>
+          </div>
+          <div className={styles.quiestion__rigth_rigth}>
+            <div>
+              <span>Свяжитесь с нами, любым удобным способом:</span>
+            </div>
+            <div className={styles.contacts}>
+              <div className={styles.contactRow}>
+                <div className={styles.contactItem}>
+                  <Image
+                    src={"/socials/wa.svg"}
+                    alt="wa"
+                    height={20}
+                    width={20}
+                  />
+                  <Link
+                    href={
+                      "https://api.whatsapp.com/send/?phone=79234053399&text&type=phone_number&app_absent=0"
+                    }
+                    target="_blanc"
+                  >
+                    <span>Чат в Whatsapp</span>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <Image
+                    src={"/socials/phone.svg"}
+                    alt="phone"
+                    width={20}
+                    height={20}
+                  />
+                  <Link href="tel:+7 923 405 33 99">
+                    <span>+7 923 405-33-99</span>
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.contactRow}>
+                <div className={styles.contactItem}>
+                  <Image
+                    src={"/socials/tg.svg"}
+                    alt="tg"
+                    height={20}
+                    width={20}
+                  />
+                  <Link href="https://t.me/zayavka_rest" target="_blanc">
+                    <span>Чат в Telegram</span>
+                  </Link>
+                </div>
+                <div className={styles.contactItem}>
+                  <Image
+                    src={"/socials/mail.svg"}
+                    alt="mail"
+                    width={20}
+                    height={20}
+                  />
+                  <Link href="mailto:rubinrest70@gmail.com" target="_blanc">
+                    <span>rubinrest70@gmail.com</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
-        </section>
-        
-    );
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </section>
+  );
 }

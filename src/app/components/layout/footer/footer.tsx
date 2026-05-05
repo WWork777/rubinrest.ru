@@ -30,8 +30,8 @@ export default function Footer() {
           </div>
           <div>
             <Image src="/footer/mail.svg" width={20} height={20} alt="mail" />
-            <Link href="mailto:rubinrest70@gmail.ru">
-              <span>rubinrest70@gmail.ru</span>
+            <Link href="mailto:rubinrest70@gmail.com">
+              <span>rubinrest70@gmail.com</span>
             </Link>
           </div>
         </div>
@@ -54,7 +54,9 @@ export default function Footer() {
       {/* Добавляем блок с копирайтом */}
       <div className={styles.footer__bottom}>
         <span>© 2025 Ресторан «Рубин». Все права защищены.</span>
-        <a href="https://virlab42.ru">Сайт разработан компанией <span>Вирлаб</span></a>
+        <a href="https://virlab42.ru">
+          Сайт разработан компанией <span>Вирлаб</span>
+        </a>
       </div>
     </section>
   );
