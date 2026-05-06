@@ -6,7 +6,7 @@ export async function POST(request) {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
     return new Response(
       JSON.stringify({ error: "Telegram credentials not configured" }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -14,7 +14,7 @@ export async function POST(request) {
     const { message } = await request.json();
 
     const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      `https://tg-proxy.parsikovevgenij470.workers.dev/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: {
@@ -25,7 +25,7 @@ export async function POST(request) {
           text: message,
           parse_mode: "HTML",
         }),
-      }
+      },
     );
 
     if (!response.ok) {
@@ -35,13 +35,13 @@ export async function POST(request) {
 
     return new Response(
       JSON.stringify({ success: true, message: "Message sent successfully" }),
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error sending to Telegram:", error);
     return new Response(
       JSON.stringify({ error: error.message || "Failed to send message" }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

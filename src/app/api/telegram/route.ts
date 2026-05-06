@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     if (!hall || !phone) {
       return NextResponse.json(
         { error: "Необходимо указать зал и телефон" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       console.error("Telegram credentials not configured");
       return NextResponse.json(
         { error: "Сервис временно недоступен" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     // Отправляем в Telegram
     const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      `https://tg-proxy.parsikovevgenij470.workers.dev/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
           text: message,
           parse_mode: "HTML",
         }),
-      }
+      },
     );
 
     if (!response.ok) {
@@ -62,13 +62,13 @@ export async function POST(request: NextRequest) {
         message: "Заявка успешно отправлена",
         telegramResponse: data,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error sending to Telegram:", error);
     return NextResponse.json(
       { error: "Ошибка при отправке заявки" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
